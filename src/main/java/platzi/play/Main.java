@@ -1,6 +1,7 @@
 package platzi.play;
 
 import platzi.play.contenido.Pelicula;
+import platzi.play.plataforma.Usuario;
 
 import java.util.Scanner;
 
@@ -32,5 +33,11 @@ public class Main {
 
         System.out.println(pelicula.obtenerFichaTecnica());
         System.out.println("Es popular? " + pelicula.esPopular());
+
+        // Nueva instancia para usuario
+        Usuario usuario = new Usuario();
+        usuario.nombre = "Sebastian";
+
+        usuario.ver(pelicula);
     }
 }
