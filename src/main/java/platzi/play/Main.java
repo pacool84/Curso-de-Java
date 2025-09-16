@@ -3,6 +3,8 @@ package platzi.play;
 import platzi.play.contenido.Pelicula;
 import platzi.play.plataforma.Usuario;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Main {
@@ -27,7 +29,7 @@ public class Main {
         pelicula.descripcion = "A computer hacker learns from mysterious rebels about the true nature of his reality";
         pelicula.duracion = 136;
         pelicula.genero = "Science Fiction";
-        pelicula.anioEstreno = 1999;
+        pelicula.fechaEstreno = LocalDate.of(2015, 10, 15);
         pelicula.calificacion = 3.3;
         pelicula.disponible = true;
 
@@ -37,7 +39,9 @@ public class Main {
         // Nueva instancia para usuario
         Usuario usuario = new Usuario();
         usuario.nombre = "Sebastian";
+        usuario.fechaRegistro = LocalDateTime.of(2025, 12, 24, 17, 15, 14);
 
         usuario.ver(pelicula);
+        System.out.println(usuario.fechaRegistro);
     }
 }

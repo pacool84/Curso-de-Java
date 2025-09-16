@@ -2,10 +2,13 @@ package platzi.play.plataforma;
 
 import platzi.play.contenido.Pelicula;
 
+import java.time.LocalDateTime;
+
 public class Usuario {
     // Atributos
     public String nombre;
     public String email;
+    public LocalDateTime fechaRegistro;
 
     // Constructor
 

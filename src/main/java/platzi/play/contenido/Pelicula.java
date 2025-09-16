@@ -1,29 +1,31 @@
 package platzi.play.contenido;
 
+import java.time.LocalDate;
+
 public class Pelicula {
     //Atributos
     public String titulo;
     public String descripcion;
     public int duracion;
     public String genero;
-    public int anioEstreno;
+    public LocalDate fechaEstreno;
     public double calificacion;
     public boolean disponible;
 
     //Constructor
 
 
-    //Metodos
+    //Métodos
     public void reproducir() {
         System.out.println("Reproduciendo la pelicula: " + titulo);
     }
 
     public String obtenerFichaTecnica() {
-        return titulo + "(" + anioEstreno + ") \n" +
+        return titulo + "(" + fechaEstreno.getYear() + ") \n" +
                "Genero: " + genero + "\n" +
-               "Duracion: " + duracion + " minutos\n" +
-               "Calificacion: " + calificacion + "/5\n" +
-               "Descripcion: " + descripcion + "\n" +
+               "Duración: " + duracion + " minutos\n" +
+               "Calificación: " + calificacion + "/5\n" +
+               "Descripción: " + descripcion + "\n" +
                (disponible ? "Disponible para ver" : "No disponible para ver");
     }
 
@@ -31,7 +33,7 @@ public class Pelicula {
         if(calificacion >= 0 && calificacion <=5) {
             this.calificacion = calificacion;
         } else {
-            System.out.println("Calificacion invalida. Debe estar entre 0 y 5");
+            System.out.println("Calificación invalida. Debe estar entre 0 y 5");
         }
     }
 
