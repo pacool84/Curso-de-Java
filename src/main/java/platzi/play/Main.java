@@ -28,7 +28,7 @@ public class Main {
 //
 //        System.out.println(nombre + " ahora se que tienes la edad de " + edad + " años");
 
-        // Trabajando con las utilerias de ScannerUtils
+        // Trabajando con las utilerías de ScannerUtils
         String nombre = ScannerUtils.capturarTexto("Nombre del contenido: "); //Se puede realizar el ScannerUtils.capturarTexto por ser un método estático "static"
         String genero = ScannerUtils.capturarTexto("Genero del contenido: ");
         int duracion = ScannerUtils.capturarEntero("Duración del contenido (minutos): ");
@@ -37,8 +37,8 @@ public class Main {
         // Creación de objetos
         Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion); // Instancia de la clase Pelicula
 
-        pelicula.descripcion = "A computer hacker learns from mysterious rebels about the true nature of his reality";
-        pelicula.calificacion = calificacion;
+//        pelicula.descripcion = "A computer hacker learns from mysterious rebels about the true nature of his reality";
+//        pelicula.calificacion = calificacion;
 
 
 //        pelicula.titulo = nombre; // Asignación de valor al atributo titulo
