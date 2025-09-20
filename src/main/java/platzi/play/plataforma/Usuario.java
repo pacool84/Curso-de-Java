@@ -11,6 +11,11 @@ public class Usuario {
     public LocalDateTime fechaRegistro;
 
     // Constructor
+    public Usuario(String nombre, String email) {
+        this.nombre = nombre;
+        this.email = email;
+        this.fechaRegistro = LocalDateTime.now(); // Fecha y hora actual
+    }
 
     // Métodos
     public void ver(Pelicula pelicula) {

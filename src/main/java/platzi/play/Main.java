@@ -35,14 +35,17 @@ public class Main {
         double calificacion = ScannerUtils.capturarDecimal("Calificación del contenido (0 - 5): ");
 
         // Creación de objetos
-        Pelicula pelicula = new Pelicula(); // Instancia de la clase Pelicula
-        pelicula.titulo = nombre; // Asignación de valor al atributo titulo
+        Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion); // Instancia de la clase Pelicula
+
         pelicula.descripcion = "A computer hacker learns from mysterious rebels about the true nature of his reality";
-        pelicula.duracion = duracion;
-        pelicula.genero = genero;
-        pelicula.fechaEstreno = LocalDate.of(2015, 10, 15);
         pelicula.calificacion = calificacion;
-        pelicula.disponible = true;
+
+
+//        pelicula.titulo = nombre; // Asignación de valor al atributo titulo
+//        pelicula.duracion = duracion;
+//        pelicula.genero = genero;
+//        pelicula.fechaEstreno = LocalDate.of(2015, 10, 15);
+//        pelicula.disponible = true;
 
         System.out.println(pelicula.obtenerFichaTecnica());
 
@@ -62,12 +65,12 @@ public class Main {
 //        System.out.println("Es popular? " + pelicula.esPopular());
 //
 //        // Nueva instancia para usuario
-//        Usuario usuario = new Usuario();
+        Usuario usuario = new Usuario("Sebastian", "chevy@hotmail.com");
 //        usuario.nombre = "Sebastian";
 //        usuario.fechaRegistro = LocalDateTime.of(2025, 12, 24, 17, 15, 14);
 //
-//        System.out.println("------USUARIO VIENDO PELÍCULA------");
-//        usuario.ver(pelicula);
+        System.out.println("------USUARIO VIENDO PELÍCULA------");
+        usuario.ver(pelicula);
 //        System.out.println(usuario.fechaRegistro);
     }
 }

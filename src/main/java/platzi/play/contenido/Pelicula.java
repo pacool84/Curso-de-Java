@@ -13,7 +13,19 @@ public class Pelicula {
     public boolean disponible;
 
     //Constructor
+    public Pelicula(String titulo, int duracion, String genero) {
+        this.titulo = titulo;
+        this.duracion = duracion;
+        this.genero = genero;
+        this.fechaEstreno = LocalDate.now(); // Fecha actual
+        this.disponible = true; // Por defecto la pelicula está disponible
+    }
 
+    //Otra forma de crear un constructor
+    public Pelicula(String titulo, int duracion, String genero, double calificacion) {
+        this(titulo, duracion, genero); // Llamada al constructor anterior
+        this.calificar(calificacion);
+    }
 
     //Métodos
     public void reproducir() {
