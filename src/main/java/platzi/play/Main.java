@@ -1,6 +1,7 @@
 package platzi.play;
 
 import platzi.play.contenido.Pelicula;
+import platzi.play.plataforma.Plataforma;
 import platzi.play.plataforma.Usuario;
 import platzi.play.util.ScannerUtils;
 
@@ -13,7 +14,7 @@ public class Main {
     public static final String NOMBRE_PLATAFORMA = "Hello My Friend JAVA 👋🏻 ";
 
     public static void main(String[] args) {
-
+        Plataforma plataforma = new Plataforma(NOMBRE_PLATAFORMA);
         System.out.println( NOMBRE_PLATAFORMA + " v" +  VERSION);
 
 //        // Leer desde consola
@@ -36,6 +37,14 @@ public class Main {
 
         // Creación de objetos
         Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion); // Instancia de la clase Pelicula
+        Pelicula pelicula2 = new Pelicula("El conjuro", 100, "Terror");
+        Pelicula pelicula3 = new Pelicula("La llorona", 95, "Terror", 4.2);
+
+        plataforma.agregar(pelicula);
+        plataforma.agregar(pelicula2);
+        System.out.println("Numero de elementos en la plataforma: " + plataforma.getContenido().size());
+        plataforma.eliminar(pelicula3);
+
 
 //        pelicula.descripcion = "A computer hacker learns from mysterious rebels about the true nature of his reality";
 //        pelicula.calificacion = calificacion;
@@ -47,8 +56,8 @@ public class Main {
 //        pelicula.fechaEstreno = LocalDate.of(2015, 10, 15);
 //        pelicula.disponible = true;
 
-        System.out.println(pelicula.obtenerFichaTecnica());
-
+//        System.out.println(pelicula.obtenerFichaTecnica()); // Llamada al método obtenerFichaTecnica para mostrar la ficha técnica de la película
+        plataforma.mostrarPeliculas();
         // Casting de tipos de datos
 //        long duracionLong = pelicula.duracion; // Conversión-CAST implícita de int a long
 //        int calificacionInt = (int) pelicula.calificacion; // Conversión-CAST explícita de double a int, se pierde la parte decimal
