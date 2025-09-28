@@ -12,10 +12,53 @@ import java.util.Scanner;
 public class Main {
     public static final String VERSION = "1.0.0"; // final - constante, no se puede modificar o reasignar "Inmutable"
     public static final String NOMBRE_PLATAFORMA = "Hello My Friend JAVA 👋🏻 ";
+    public static final int AGREGAR_CONTENIDO = 1;
+    public static final int MOSTRAR_CONTENIDO = 2;
+    public static final int BUSCAR_CONTENIDO = 3;
+    public static final int ELIMINAR_CONTENIDO = 4;
+    public static final int SALIR = 5;
 
     public static void main(String[] args) {
         Plataforma plataforma = new Plataforma(NOMBRE_PLATAFORMA);
         System.out.println( NOMBRE_PLATAFORMA + " v" +  VERSION);
+
+        // Menú de opciones
+        while (true) {
+            int opcionElegida = ScannerUtils.capturarEntero("""
+                    1. Agregar contenido a la plataforma
+                    2. Mostrar todo el contenido de la plataforma
+                    3. Buscar un contenido por su título
+                    4. Eliminar un contenido
+                    5. Salir de la plataforma
+                    Elige una opción 
+                    """);
+            System.out.println("Has elegido la opción: " + opcionElegida);
+
+            switch (opcionElegida) {
+                case AGREGAR_CONTENIDO -> {
+                    String nombre = ScannerUtils.capturarTexto("Nombre del contenido: "); //Se puede realizar el ScannerUtils.capturarTexto por ser un método estático "static"
+                    String genero = ScannerUtils.capturarTexto("Genero del contenido: ");
+                    int duracion = ScannerUtils.capturarEntero("Duración del contenido (minutos): ");
+                    double calificacion = ScannerUtils.capturarDecimal("Calificación del contenido (0 - 5): ");
+
+                    Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion); // Instancia de la clase Pelicula
+                    plataforma.agregar(pelicula);
+                    System.out.println("El contenido ha sido agregado exitosamente");
+                }
+                case MOSTRAR_CONTENIDO -> plataforma.mostrarPeliculas();
+                case BUSCAR_CONTENIDO -> {
+                    // FALTA IMPLEMENTAR
+                }
+                case ELIMINAR_CONTENIDO -> {
+                    // FALTA IMPLEMENTAR
+                }
+                case SALIR -> System.exit(0);
+
+                default -> System.out.println("Opción no válida, por favor elige una opción del 1 al 5");
+
+            }
+        }
+
 
 //        // Leer desde consola
 //        Scanner scanner = new Scanner(System.in);
@@ -30,20 +73,20 @@ public class Main {
 //        System.out.println(nombre + " ahora se que tienes la edad de " + edad + " años");
 
         // Trabajando con las utilerías de ScannerUtils
-        String nombre = ScannerUtils.capturarTexto("Nombre del contenido: "); //Se puede realizar el ScannerUtils.capturarTexto por ser un método estático "static"
-        String genero = ScannerUtils.capturarTexto("Genero del contenido: ");
-        int duracion = ScannerUtils.capturarEntero("Duración del contenido (minutos): ");
-        double calificacion = ScannerUtils.capturarDecimal("Calificación del contenido (0 - 5): ");
+//        String nombre = ScannerUtils.capturarTexto("Nombre del contenido: "); //Se puede realizar el ScannerUtils.capturarTexto por ser un método estático "static"
+//        String genero = ScannerUtils.capturarTexto("Genero del contenido: ");
+//        int duracion = ScannerUtils.capturarEntero("Duración del contenido (minutos): ");
+//        double calificacion = ScannerUtils.capturarDecimal("Calificación del contenido (0 - 5): ");
 
         // Creación de objetos
-        Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion); // Instancia de la clase Pelicula
-        Pelicula pelicula2 = new Pelicula("El conjuro", 100, "Terror");
-        Pelicula pelicula3 = new Pelicula("La llorona", 95, "Terror", 4.2);
+//        Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion); // Instancia de la clase Pelicula
+//        Pelicula pelicula2 = new Pelicula("El conjuro", 100, "Terror");
+//        Pelicula pelicula3 = new Pelicula("La llorona", 95, "Terror", 4.2);
 
-        plataforma.agregar(pelicula);
-        plataforma.agregar(pelicula2);
-        System.out.println("Numero de elementos en la plataforma: " + plataforma.getContenido().size());
-        plataforma.eliminar(pelicula3);
+//        plataforma.agregar(pelicula);
+//        plataforma.agregar(pelicula2);
+//        System.out.println("Numero de elementos en la plataforma: " + plataforma.getContenido().size());
+//        plataforma.eliminar(pelicula3);
 
 
 //        pelicula.descripcion = "A computer hacker learns from mysterious rebels about the true nature of his reality";
@@ -57,7 +100,7 @@ public class Main {
 //        pelicula.disponible = true;
 
 //        System.out.println(pelicula.obtenerFichaTecnica()); // Llamada al método obtenerFichaTecnica para mostrar la ficha técnica de la película
-        plataforma.mostrarPeliculas();
+//        plataforma.mostrarPeliculas();
         // Casting de tipos de datos
 //        long duracionLong = pelicula.duracion; // Conversión-CAST implícita de int a long
 //        int calificacionInt = (int) pelicula.calificacion; // Conversión-CAST explícita de double a int, se pierde la parte decimal
@@ -74,12 +117,12 @@ public class Main {
 //        System.out.println("Es popular? " + pelicula.esPopular());
 //
 //        // Nueva instancia para usuario
-        Usuario usuario = new Usuario("Sebastian", "chevy@hotmail.com");
+//        Usuario usuario = new Usuario("Sebastian", "chevy@hotmail.com");
 //        usuario.nombre = "Sebastian";
 //        usuario.fechaRegistro = LocalDateTime.of(2025, 12, 24, 17, 15, 14);
 //
-        System.out.println("------USUARIO VIENDO PELÍCULA------");
-        usuario.ver(pelicula);
+//        System.out.println("------USUARIO VIENDO PELÍCULA------");
+//        usuario.ver(pelicula);
 //        System.out.println(usuario.fechaRegistro);
     }
 }

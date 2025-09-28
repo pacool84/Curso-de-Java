@@ -16,6 +16,12 @@ public class ScannerUtils {
     public static int capturarEntero(String mensaje) {
         System.out.println(mensaje + ": ");
 
+        // Validar que el usuario ingrese un número válido
+        while (!SCANNER.hasNextInt()) {
+            System.out.println("Por favor ingresa un NÚMERO válido.");
+            SCANNER.next(); // Limpiar la entrada inválida
+        }
+
         int dato = SCANNER.nextInt();
         SCANNER.nextLine();
         return dato;
@@ -26,6 +32,10 @@ public class ScannerUtils {
     public static double capturarDecimal(String mensaje) {
         System.out.println(mensaje + ": ");
 
+        while (!SCANNER.hasNextDouble()) {
+            System.out.println("Por favor ingresa un NÚMERO decimal válido.");
+            SCANNER.next(); // Limpiar la entrada inválida
+        }
         double dato = SCANNER.nextDouble();
         SCANNER.nextLine();
         return dato;

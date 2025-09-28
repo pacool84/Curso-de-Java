@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Plataforma {
     private String nombre;
-    private List<Pelicula> contenido;
+    private List<Pelicula> contenido; // Entre Plataforma y Contenido hay una relación de Agregación
 
     // Constructor
     public Plataforma(String nombre) {
