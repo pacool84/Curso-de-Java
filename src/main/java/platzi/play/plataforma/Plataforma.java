@@ -33,6 +33,16 @@ public class Plataforma {
         this.contenido.remove(elemento);
     }
 
+    // Método para buscar una película por título
+    public Pelicula buscarPorTitulo(String titulo) {
+        for(Pelicula pelicula : contenido) {
+            if(pelicula.getTitulo().equalsIgnoreCase(titulo)){
+                return pelicula; // Retorna la película si se encuentra
+            }
+        }
+        return null; // Retorna null si no se encuentra la película
+    }
+
     // Getters y Setters
 
     public String getNombre() {

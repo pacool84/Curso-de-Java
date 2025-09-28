@@ -22,6 +22,8 @@ public class Main {
         Plataforma plataforma = new Plataforma(NOMBRE_PLATAFORMA);
         System.out.println( NOMBRE_PLATAFORMA + " v" +  VERSION);
 
+        cargarPeliculas(plataforma); // Cargar películas iniciales a la plataforma
+
         // Menú de opciones
         while (true) {
             int opcionElegida = ScannerUtils.capturarEntero("""
@@ -32,7 +34,6 @@ public class Main {
                     5. Salir de la plataforma
                     Elige una opción 
                     """);
-            System.out.println("Has elegido la opción: " + opcionElegida);
 
             switch (opcionElegida) {
                 case AGREGAR_CONTENIDO -> {
@@ -48,9 +49,24 @@ public class Main {
                 case MOSTRAR_CONTENIDO -> plataforma.mostrarPeliculas();
                 case BUSCAR_CONTENIDO -> {
                     // FALTA IMPLEMENTAR
+                    String nombreBuscado = ScannerUtils.capturarTexto("Ingresa el título del contenido a buscar: ");
+                    Pelicula pelicula = plataforma.buscarPorTitulo(nombreBuscado);
+                    if(pelicula != null) {
+                        System.out.println("Contenido encontrado: " + pelicula.obtenerFichaTecnica());
+                    } else {
+                        System.out.println("No se encontró contenido con el título: " + nombreBuscado);
+                    }
                 }
                 case ELIMINAR_CONTENIDO -> {
                     // FALTA IMPLEMENTAR
+                    String nombreEliminar = ScannerUtils.capturarTexto("Ingresa el título del contenido a eliminar: ");
+                    Pelicula pelicula = plataforma.buscarPorTitulo(nombreEliminar);
+                    if(pelicula != null) {
+                        plataforma.eliminar(pelicula);
+                        System.out.println("El contenido ha sido eliminado exitosamente. " + nombreEliminar);
+                    } else {
+                        System.out.println("No se encontró contenido con el título: " + nombreEliminar);
+                    }
                 }
                 case SALIR -> System.exit(0);
 
@@ -58,71 +74,18 @@ public class Main {
 
             }
         }
+    }
 
-
-//        // Leer desde consola
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Cual es tu nombre? ");
-//        String nombre = scanner.nextLine();
-//
-//        System.out.println("👋🏻 Hola mi buen amigo " + nombre);
-//
-//        System.out.println(nombre +  " Cuantos años tienes? ");
-//        int edad = scanner.nextInt();
-//
-//        System.out.println(nombre + " ahora se que tienes la edad de " + edad + " años");
-
-        // Trabajando con las utilerías de ScannerUtils
-//        String nombre = ScannerUtils.capturarTexto("Nombre del contenido: "); //Se puede realizar el ScannerUtils.capturarTexto por ser un método estático "static"
-//        String genero = ScannerUtils.capturarTexto("Genero del contenido: ");
-//        int duracion = ScannerUtils.capturarEntero("Duración del contenido (minutos): ");
-//        double calificacion = ScannerUtils.capturarDecimal("Calificación del contenido (0 - 5): ");
-
-        // Creación de objetos
-//        Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion); // Instancia de la clase Pelicula
-//        Pelicula pelicula2 = new Pelicula("El conjuro", 100, "Terror");
-//        Pelicula pelicula3 = new Pelicula("La llorona", 95, "Terror", 4.2);
-
-//        plataforma.agregar(pelicula);
-//        plataforma.agregar(pelicula2);
-//        System.out.println("Numero de elementos en la plataforma: " + plataforma.getContenido().size());
-//        plataforma.eliminar(pelicula3);
-
-
-//        pelicula.descripcion = "A computer hacker learns from mysterious rebels about the true nature of his reality";
-//        pelicula.calificacion = calificacion;
-
-
-//        pelicula.titulo = nombre; // Asignación de valor al atributo titulo
-//        pelicula.duracion = duracion;
-//        pelicula.genero = genero;
-//        pelicula.fechaEstreno = LocalDate.of(2015, 10, 15);
-//        pelicula.disponible = true;
-
-//        System.out.println(pelicula.obtenerFichaTecnica()); // Llamada al método obtenerFichaTecnica para mostrar la ficha técnica de la película
-//        plataforma.mostrarPeliculas();
-        // Casting de tipos de datos
-//        long duracionLong = pelicula.duracion; // Conversión-CAST implícita de int a long
-//        int calificacionInt = (int) pelicula.calificacion; // Conversión-CAST explícita de double a int, se pierde la parte decimal
-//        long numeroDePremios = (int) Long.parseLong("25"); // Conversión-CAST explícita de String a long,
-//
-//        System.out.println("------CASTING DE TIPOS DE DATOS------");
-//        System.out.println("Duración Long: " + duracionLong);
-//        System.out.println("Calificación Int: " +  calificacionInt);
-//        System.out.println("Números de premios: " + numeroDePremios);
-//
-//        // Uso de métodos
-//        System.out.println("------FICHA TÉCNICA DE LA PELÍCULA------");
-//        System.out.println(pelicula.obtenerFichaTecnica());
-//        System.out.println("Es popular? " + pelicula.esPopular());
-//
-//        // Nueva instancia para usuario
-//        Usuario usuario = new Usuario("Sebastian", "chevy@hotmail.com");
-//        usuario.nombre = "Sebastian";
-//        usuario.fechaRegistro = LocalDateTime.of(2025, 12, 24, 17, 15, 14);
-//
-//        System.out.println("------USUARIO VIENDO PELÍCULA------");
-//        usuario.ver(pelicula);
-//        System.out.println(usuario.fechaRegistro);
+    private static void cargarPeliculas(Plataforma plataforma) {
+        plataforma.agregar(new Pelicula("Shrek", 90, "Animada"));
+        plataforma.agregar(new Pelicula("Inception", 148, "Ciencia Ficcion"));
+        plataforma.agregar(new Pelicula("Titanic", 195, "Drama", 4.6));
+        plataforma.agregar(new Pelicula("John Wick", 101, "Accion"));
+        plataforma.agregar(new Pelicula("El Conjuro", 112, "Terror", 3.0));
+        plataforma.agregar(new Pelicula("Coco", 105, "Animada", 4.7));
+        plataforma.agregar(new Pelicula("Interstellar", 169, "Ciencia Ficcion", 5));
+        plataforma.agregar(new Pelicula("Joker", 122, "Drama"));
+        plataforma.agregar(new Pelicula("Toy Story", 81, "Animada", 4.5));
+        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, "Accion", 3.9));
     }
 }
