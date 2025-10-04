@@ -23,9 +23,11 @@ public class Plataforma {
 
     // Método para recorrer y mostrar las películas
     public void mostrarPeliculas(){
-        for(int i = 0; i < this.contenido.size(); i++){
-            System.out.println(contenido.get(i).getTitulo());
-        }
+//        for(int i = 0; i < this.contenido.size(); i++){
+//            System.out.println(contenido.get(i).getTitulo());
+//        }
+
+        contenido.forEach(contenido -> System.out.println(contenido.getTitulo())); // Uso de expresión lambda, forma simplificada de escribir un metodo
     }
 
     // Método para eliminar una película
@@ -35,12 +37,22 @@ public class Plataforma {
 
     // Método para buscar una película por título
     public Pelicula buscarPorTitulo(String titulo) {
-        for(Pelicula pelicula : contenido) {
-            if(pelicula.getTitulo().equalsIgnoreCase(titulo)){
-                return pelicula; // Retorna la película si se encuentra
-            }
-        }
-        return null; // Retorna null si no se encuentra la película
+//        for(Pelicula pelicula : contenido) {
+//            if(pelicula.getTitulo().equalsIgnoreCase(titulo)){
+//                return pelicula; // Retorna la película si se encuentra
+//            }
+//        }
+//        return null; // Retorna null si no se encuentra la película
+
+        return contenido.stream()// Stream es una secuencia de elementos que soporta operaciones agregadas
+                .filter(contenido -> contenido.getTitulo() // Filtra los elementos del stream
+                        .equalsIgnoreCase(titulo)).findFirst() // Encuentra el primer elemento que cumple con la condición
+                .orElse(null);
+
+    }
+
+    public List<Pelicula> buscarPorGenero(String genero) {
+        return contenido.stream().filter(contenido -> contenido.getGenero().equalsIgnoreCase(genero)).toList();
     }
 
     // Getters y Setters

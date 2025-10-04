@@ -7,6 +7,7 @@ import platzi.play.util.ScannerUtils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -15,8 +16,9 @@ public class Main {
     public static final int AGREGAR_CONTENIDO = 1;
     public static final int MOSTRAR_CONTENIDO = 2;
     public static final int BUSCAR_CONTENIDO = 3;
-    public static final int ELIMINAR_CONTENIDO = 4;
-    public static final int SALIR = 5;
+    public static final int BUSCAR_POR_GENERO = 4;
+    public static final int ELIMINAR_CONTENIDO = 5;
+    public static final int SALIR = 0;
 
     public static void main(String[] args) {
         Plataforma plataforma = new Plataforma(NOMBRE_PLATAFORMA);
@@ -30,8 +32,9 @@ public class Main {
                     1. Agregar contenido a la plataforma
                     2. Mostrar todo el contenido de la plataforma
                     3. Buscar un contenido por su título
-                    4. Eliminar un contenido
-                    5. Salir de la plataforma
+                    4. Buscar un contenido por su género
+                    5. Eliminar un contenido
+                    0. Salir de la plataforma
                     Elige una opción 
                     """);
 
@@ -67,6 +70,12 @@ public class Main {
                     } else {
                         System.out.println("No se encontró contenido con el título: " + nombreEliminar);
                     }
+                }
+                case BUSCAR_POR_GENERO -> {
+                    String generoBuscado = ScannerUtils.capturarTexto("Ingresa el género del contenido a buscar: ");
+                    List<Pelicula> contenidoPorGenero = plataforma.buscarPorGenero(generoBuscado);
+                    System.out.println(contenidoPorGenero.size() + " contenidos encontrados del género " + generoBuscado.toUpperCase() );
+                    contenidoPorGenero.forEach(contenido -> System.out.println(contenido.obtenerFichaTecnica() + "\n"));
                 }
                 case SALIR -> System.exit(0);
 
