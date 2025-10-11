@@ -17,7 +17,8 @@ public class Main {
     public static final int MOSTRAR_CONTENIDO = 2;
     public static final int BUSCAR_CONTENIDO = 3;
     public static final int BUSCAR_POR_GENERO = 4;
-    public static final int ELIMINAR_CONTENIDO = 5;
+    public static final int VER_POPULARES = 5;
+    public static final int ELIMINAR_CONTENIDO = 6;
     public static final int SALIR = 0;
 
     public static void main(String[] args) {
@@ -26,6 +27,8 @@ public class Main {
 
         cargarPeliculas(plataforma); // Cargar películas iniciales a la plataforma
 
+        System.out.println("Mas de " + plataforma.getDuracionTotal() + " minutos de  contenido \n");
+
         // Menú de opciones
         while (true) {
             int opcionElegida = ScannerUtils.capturarEntero("""
@@ -33,7 +36,8 @@ public class Main {
                     2. Mostrar todo el contenido de la plataforma
                     3. Buscar un contenido por su título
                     4. Buscar un contenido por su género
-                    5. Eliminar un contenido
+                    5. Mostrar populares
+                    6. Eliminar un contenido
                     0. Salir de la plataforma
                     Elige una opción 
                     """);
@@ -49,7 +53,10 @@ public class Main {
                     plataforma.agregar(pelicula);
                     System.out.println("El contenido ha sido agregado exitosamente");
                 }
-                case MOSTRAR_CONTENIDO -> plataforma.mostrarPeliculas();
+                case MOSTRAR_CONTENIDO -> {
+                    List<String> titulos = plataforma.getTitulos();
+                    titulos.forEach(System.out::println); //Llamado por método de referencia
+                }
                 case BUSCAR_CONTENIDO -> {
                     // FALTA IMPLEMENTAR
                     String nombreBuscado = ScannerUtils.capturarTexto("Ingresa el título del contenido a buscar: ");
@@ -77,6 +84,12 @@ public class Main {
                     System.out.println(contenidoPorGenero.size() + " contenidos encontrados del género " + generoBuscado.toUpperCase() );
                     contenidoPorGenero.forEach(contenido -> System.out.println(contenido.obtenerFichaTecnica() + "\n"));
                 }
+                case VER_POPULARES -> {
+                    int cantidad = ScannerUtils.capturarEntero("Cantidad de películas populares a mostrar: ");
+
+                    List<Pelicula> contenidosPopulares = plataforma.getPopulares(cantidad);
+                    contenidosPopulares.forEach(contenido -> System.out.println(contenido.obtenerFichaTecnica() + "\n"));
+                }
                 case SALIR -> System.exit(0);
 
                 default -> System.out.println("Opción no válida, por favor elige una opción del 1 al 5");
@@ -98,3 +111,7 @@ public class Main {
         plataforma.agregar(new Pelicula("Avengers: Endgame", 181, "Accion", 3.9));
     }
 }
+
+//Reto
+// 1. Filtar aquellas peliculas con calificación mayor o igual a 4.0, las mas populares
+// 2. Crear un metodo para obtener la pelicula mas larga y la mas corta

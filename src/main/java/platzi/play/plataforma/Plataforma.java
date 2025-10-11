@@ -3,6 +3,7 @@ package platzi.play.plataforma;
 import platzi.play.contenido.Pelicula;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Plataforma {
@@ -22,12 +23,16 @@ public class Plataforma {
     }
 
     // Método para recorrer y mostrar las películas
-    public void mostrarPeliculas(){
+    public List<String> getTitulos(){
 //        for(int i = 0; i < this.contenido.size(); i++){
 //            System.out.println(contenido.get(i).getTitulo());
 //        }
 
-        contenido.forEach(contenido -> System.out.println(contenido.getTitulo())); // Uso de expresión lambda, forma simplificada de escribir un metodo
+//        contenido.forEach(contenido -> System.out.println(contenido.getTitulo())); // Uso de expresión lambda, forma simplificada de escribir un metodo
+
+        return contenido.stream().
+                map(Pelicula::getTitulo)
+                .toList();
     }
 
     // Método para eliminar una película
@@ -53,6 +58,19 @@ public class Plataforma {
 
     public List<Pelicula> buscarPorGenero(String genero) {
         return contenido.stream().filter(contenido -> contenido.getGenero().equalsIgnoreCase(genero)).toList();
+    }
+
+    public List<Pelicula> getPopulares(int cantidad) {
+        return contenido.stream()
+                .sorted(Comparator.comparingDouble(Pelicula::getCalificacion).reversed())
+                .limit(cantidad)
+                .toList();
+    }
+
+    public int getDuracionTotal() {
+        return contenido.stream()
+                .mapToInt(Pelicula::getDuracion)
+                .sum();
     }
 
     // Getters y Setters
