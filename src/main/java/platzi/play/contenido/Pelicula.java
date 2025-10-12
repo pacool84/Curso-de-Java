@@ -7,13 +7,13 @@ public class Pelicula {
     private String titulo;
     private String descripcion;
     private int duracion;
-    private String genero;
+    private Genero genero;
     private LocalDate fechaEstreno;
     private double calificacion;
     private boolean disponible;
 
     //Constructor
-    public Pelicula(String titulo, int duracion, String genero) {
+    public Pelicula(String titulo, int duracion, Genero genero) {
         this.titulo = titulo;
         this.duracion = duracion;
         this.genero = genero;
@@ -22,7 +22,7 @@ public class Pelicula {
     }
 
     //Otra forma de crear un constructor
-    public Pelicula(String titulo, int duracion, String genero, double calificacion) {
+    public Pelicula(String titulo, int duracion, Genero genero, double calificacion) {
         this(titulo, duracion, genero); // Llamada al constructor anterior
         this.calificar(calificacion);
     }
@@ -79,11 +79,11 @@ public class Pelicula {
         this.duracion = duracion;
     }
 
-    public String getGenero() {
+    public Genero getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Genero genero) {
         this.genero = genero;
     }
 

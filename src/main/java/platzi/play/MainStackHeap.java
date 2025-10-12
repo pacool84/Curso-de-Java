@@ -1,11 +1,12 @@
 package platzi.play;
 
+import platzi.play.contenido.Genero;
 import platzi.play.contenido.Pelicula;
 
 public class MainStackHeap {
     public static void main(String[] args) {
-        Pelicula reyLeon = new Pelicula("El rey Leon", 120, "Animación");
-        Pelicula harryPotter = new Pelicula("Harry Potter", 150, "Fantasía");
+        Pelicula reyLeon = new Pelicula("El rey Leon", 120, Genero.ANIMACION);
+        Pelicula harryPotter = new Pelicula("Harry Potter", 150, Genero.FANTASIA);
 
         reyLeon = harryPotter; // Ambas variables apuntan al mismo objeto en memoria heap
 

@@ -1,5 +1,6 @@
 package platzi.play;
 
+import platzi.play.contenido.Genero;
 import platzi.play.contenido.Pelicula;
 import platzi.play.plataforma.Plataforma;
 import platzi.play.plataforma.Usuario;
@@ -49,7 +50,7 @@ public class Main {
             switch (opcionElegida) {
                 case AGREGAR_CONTENIDO -> {
                     String nombre = ScannerUtils.capturarTexto("Nombre del contenido: "); //Se puede realizar el ScannerUtils.capturarTexto por ser un método estático "static"
-                    String genero = ScannerUtils.capturarTexto("Genero del contenido: ");
+                    Genero genero = ScannerUtils.capturaGenero("Genero del contenido: ");
                     int duracion = ScannerUtils.capturarEntero("Duración del contenido (minutos): ");
                     double calificacion = ScannerUtils.capturarDecimal("Calificación del contenido (0 - 5): ");
 
@@ -83,9 +84,9 @@ public class Main {
                     }
                 }
                 case BUSCAR_POR_GENERO -> {
-                    String generoBuscado = ScannerUtils.capturarTexto("Ingresa el género del contenido a buscar: ");
+                    Genero generoBuscado = ScannerUtils.capturaGenero("Ingresa el género a buscar: ");
                     List<Pelicula> contenidoPorGenero = plataforma.buscarPorGenero(generoBuscado);
-                    System.out.println(contenidoPorGenero.size() + " contenidos encontrados del género " + generoBuscado.toUpperCase() );
+                    System.out.println(contenidoPorGenero.size() + " contenidos encontrados del género " + generoBuscado + ":\n");
                     contenidoPorGenero.forEach(contenido -> System.out.println(contenido.obtenerFichaTecnica() + "\n"));
                 }
                 case VER_POPULARES -> {
@@ -113,20 +114,20 @@ public class Main {
     }
 
     private static void cargarPeliculas(Plataforma plataforma) {
-        plataforma.agregar(new Pelicula("Shrek", 90, "Animada"));
-        plataforma.agregar(new Pelicula("Inception", 148, "Ciencia Ficcion"));
-        plataforma.agregar(new Pelicula("Titanic", 195, "Drama", 4.6));
-        plataforma.agregar(new Pelicula("John Wick", 101, "Accion"));
-        plataforma.agregar(new Pelicula("El Conjuro", 112, "Terror", 3.0));
-        plataforma.agregar(new Pelicula("Coco", 105, "Animada", 4.7));
-        plataforma.agregar(new Pelicula("Interstellar", 169, "Ciencia Ficcion", 5));
-        plataforma.agregar(new Pelicula("Joker", 122, "Drama"));
-        plataforma.agregar(new Pelicula("Toy Story", 81, "Animada", 4.5));
-        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, "Accion", 3.9));
+        plataforma.agregar(new Pelicula("Shrek", 90, Genero.ANIMACION));
+        plataforma.agregar(new Pelicula("Inception", 148, Genero.CIENCIA_FICCION));
+        plataforma.agregar(new Pelicula("Titanic", 195, Genero.DRAMA, 4.6));
+        plataforma.agregar(new Pelicula("John Wick", 101, Genero.ACCION));
+        plataforma.agregar(new Pelicula("El Conjuro", 112, Genero.HORROR, 3.0));
+        plataforma.agregar(new Pelicula("Coco", 105, Genero.ANIMACION, 4.7));
+        plataforma.agregar(new Pelicula("Interstellar", 169, Genero.CIENCIA_FICCION, 5));
+        plataforma.agregar(new Pelicula("Joker", 122, Genero.DRAMA));
+        plataforma.agregar(new Pelicula("Toy Story", 81, Genero.ANIMACION, 4.5));
+        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, Genero.ACCION, 3.9));
     }
 }
 
-//Reto
+//Retos
 // 1. Filtar aquellas peliculas con calificación mayor o igual a 4.0, las mas populares
 //Solución
 // 1.1 Crear la constante VER_MAS_POPULARES = # ✔
@@ -141,4 +142,6 @@ public class Main {
 // 2.2 Agregar la nueva opcion al menu del programa
 // 2.3 Agregar el nuevo CASE que gestionara la nueva opcion, desde aqui llamaremos al nuevo metodo
 // 2.4 Crear un nuevo metodo en la clase Plataforma para obtener la pelicula mas larga
+
+// 3 Crear atributos extras en la clase Pelicula que sean idioma(Español, Ingles, Aleman) y calidad (HD, FULL HD, 4K) y que cada uno de ellos sea un ENUM
 
