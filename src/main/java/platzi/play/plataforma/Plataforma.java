@@ -67,6 +67,13 @@ public class Plataforma {
                 .toList();
     }
 
+    public List<Pelicula> getMostPopulars() {
+        return contenido.stream()
+                .filter(pelicula -> pelicula.getCalificacion() >= 4.0)
+                .sorted(Comparator.comparingDouble(Pelicula::getCalificacion).reversed())
+                .toList();
+    }
+
     public int getDuracionTotal() {
         return contenido.stream()
                 .mapToInt(Pelicula::getDuracion)

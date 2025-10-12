@@ -18,7 +18,8 @@ public class Main {
     public static final int BUSCAR_CONTENIDO = 3;
     public static final int BUSCAR_POR_GENERO = 4;
     public static final int VER_POPULARES = 5;
-    public static final int ELIMINAR_CONTENIDO = 6;
+    public static final int VER_MAS_POPULARES = 6;
+    public static final int ELIMINAR_CONTENIDO = 7;
     public static final int SALIR = 0;
 
     public static void main(String[] args) {
@@ -36,8 +37,9 @@ public class Main {
                     2. Mostrar todo el contenido de la plataforma
                     3. Buscar un contenido por su título
                     4. Buscar un contenido por su género
-                    5. Mostrar populares
-                    6. Eliminar un contenido
+                    5. Mostrar populares 
+                    6. Mostrar películas con calificación mayor a 4 
+                    7. Eliminar un contenido
                     0. Salir de la plataforma
                     Elige una opción 
                     """);
@@ -90,6 +92,11 @@ public class Main {
                     List<Pelicula> contenidosPopulares = plataforma.getPopulares(cantidad);
                     contenidosPopulares.forEach(contenido -> System.out.println(contenido.obtenerFichaTecnica() + "\n"));
                 }
+                case VER_MAS_POPULARES -> {
+                    List<Pelicula> contenidosMasPopulares = plataforma.getMostPopulars();
+                    System.out.println("Peliculas con calificación mayor o igual a 4.0: \n");
+                    contenidosMasPopulares.forEach(contenido -> System.out.println(contenido.obtenerFichaTecnica() + "\n"));
+                }
                 case SALIR -> System.exit(0);
 
                 default -> System.out.println("Opción no válida, por favor elige una opción del 1 al 5");
@@ -114,4 +121,11 @@ public class Main {
 
 //Reto
 // 1. Filtar aquellas peliculas con calificación mayor o igual a 4.0, las mas populares
+//Solución
+// 1.1 Crear la constante VER_MAS_POPULARES = # ✔
+// 1.2 Agregar la nueva opcion al menu del programa ✔
+// 1.3 Agregar el nuevo CASE que gestionara la nueva opcion, desde aqui llamaremos al nuevo metodo ✔
+// 1.4 Crear un nuevo metodo en la clase Plataforma para filtrar por peliculas >= 4
+// 1.5 Ajustar el CASE creado previamente para procesar los datos de las peliculas >= 4
+
 // 2. Crear un metodo para obtener la pelicula mas larga y la mas corta
