@@ -73,6 +73,11 @@ public class Plataforma {
                 .sorted(Comparator.comparingDouble(Pelicula::getCalificacion).reversed())
                 .toList();
     }
+    public Pelicula getPeliculaMasLarga() {
+        return contenido.stream()
+                .max(Comparator.comparingInt(Pelicula::getDuracion))
+                .orElse(null);
+    }
 
     public int getDuracionTotal() {
         return contenido.stream()

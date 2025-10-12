@@ -19,7 +19,8 @@ public class Main {
     public static final int BUSCAR_POR_GENERO = 4;
     public static final int VER_POPULARES = 5;
     public static final int VER_MAS_POPULARES = 6;
-    public static final int ELIMINAR_CONTENIDO = 7;
+    public static final int PELICULA_MAS_LARGA = 7;
+    public static final int ELIMINAR_CONTENIDO = 8;
     public static final int SALIR = 0;
 
     public static void main(String[] args) {
@@ -39,7 +40,8 @@ public class Main {
                     4. Buscar un contenido por su género
                     5. Mostrar populares 
                     6. Mostrar películas con calificación mayor a 4 
-                    7. Eliminar un contenido
+                    7. Mostrar la película más larga
+                    8. Eliminar un contenido
                     0. Salir de la plataforma
                     Elige una opción 
                     """);
@@ -97,6 +99,11 @@ public class Main {
                     System.out.println("Peliculas con calificación mayor o igual a 4.0: \n");
                     contenidosMasPopulares.forEach(contenido -> System.out.println(contenido.obtenerFichaTecnica() + "\n"));
                 }
+                case PELICULA_MAS_LARGA -> {
+                    System.out.println("Película más larga de la plataforma: \n");
+                    Pelicula peliculaMasLarga = plataforma.getPeliculaMasLarga();
+                    System.out.println(peliculaMasLarga.obtenerFichaTecnica() + "\n");
+                }
                 case SALIR -> System.exit(0);
 
                 default -> System.out.println("Opción no válida, por favor elige una opción del 1 al 5");
@@ -128,4 +135,10 @@ public class Main {
 // 1.4 Crear un nuevo metodo en la clase Plataforma para filtrar por peliculas >= 4
 // 1.5 Ajustar el CASE creado previamente para procesar los datos de las peliculas >= 4
 
-// 2. Crear un metodo para obtener la pelicula mas larga y la mas corta
+// 2. Obtener la pelicula mas larga de la plataforma
+// Solución
+// 2.1 Crear la constante PELICULA_MAS_LARGA = #
+// 2.2 Agregar la nueva opcion al menu del programa
+// 2.3 Agregar el nuevo CASE que gestionara la nueva opcion, desde aqui llamaremos al nuevo metodo
+// 2.4 Crear un nuevo metodo en la clase Plataforma para obtener la pelicula mas larga
+
