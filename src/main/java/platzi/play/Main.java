@@ -1,6 +1,7 @@
 package platzi.play;
 
 import platzi.play.contenido.Genero;
+import platzi.play.contenido.Idioma;
 import platzi.play.contenido.Pelicula;
 import platzi.play.plataforma.Plataforma;
 import platzi.play.plataforma.Usuario;
@@ -51,10 +52,11 @@ public class Main {
                 case AGREGAR_CONTENIDO -> {
                     String nombre = ScannerUtils.capturarTexto("Nombre del contenido: "); //Se puede realizar el ScannerUtils.capturarTexto por ser un método estático "static"
                     Genero genero = ScannerUtils.capturaGenero("Genero del contenido: ");
+                    Idioma idioma = ScannerUtils.capturaIdioma("Idioma del contenido: ");
                     int duracion = ScannerUtils.capturarEntero("Duración del contenido (minutos): ");
                     double calificacion = ScannerUtils.capturarDecimal("Calificación del contenido (0 - 5): ");
 
-                    Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion); // Instancia de la clase Pelicula
+                    Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion, idioma); // Instancia de la clase Pelicula
                     plataforma.agregar(pelicula);
                     System.out.println("El contenido ha sido agregado exitosamente");
                 }
@@ -114,16 +116,16 @@ public class Main {
     }
 
     private static void cargarPeliculas(Plataforma plataforma) {
-        plataforma.agregar(new Pelicula("Shrek", 90, Genero.ANIMACION));
-        plataforma.agregar(new Pelicula("Inception", 148, Genero.CIENCIA_FICCION));
-        plataforma.agregar(new Pelicula("Titanic", 195, Genero.DRAMA, 4.6));
-        plataforma.agregar(new Pelicula("John Wick", 101, Genero.ACCION));
-        plataforma.agregar(new Pelicula("El Conjuro", 112, Genero.HORROR, 3.0));
-        plataforma.agregar(new Pelicula("Coco", 105, Genero.ANIMACION, 4.7));
-        plataforma.agregar(new Pelicula("Interstellar", 169, Genero.CIENCIA_FICCION, 5));
-        plataforma.agregar(new Pelicula("Joker", 122, Genero.DRAMA));
-        plataforma.agregar(new Pelicula("Toy Story", 81, Genero.ANIMACION, 4.5));
-        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, Genero.ACCION, 3.9));
+        plataforma.agregar(new Pelicula("Shrek", 90, Genero.ANIMACION, Idioma.ESPAÑOL));
+        plataforma.agregar(new Pelicula("Inception", 148, Genero.CIENCIA_FICCION, Idioma.INGLES));
+        plataforma.agregar(new Pelicula("Titanic", 195, Genero.DRAMA, 4.6, Idioma.INGLES));
+        plataforma.agregar(new Pelicula("John Wick", 101, Genero.ACCION, Idioma.INGLES));
+        plataforma.agregar(new Pelicula("El Conjuro", 112, Genero.HORROR, 3.0, Idioma.FRANCES));
+        plataforma.agregar(new Pelicula("Coco", 105, Genero.ANIMACION, 4.7, Idioma.ESPAÑOL));
+        plataforma.agregar(new Pelicula("Interstellar", 169, Genero.CIENCIA_FICCION, 5, Idioma.INGLES));
+        plataforma.agregar(new Pelicula("Joker", 122, Genero.DRAMA, 4.3, Idioma.INGLES));
+        plataforma.agregar(new Pelicula("Toy Story", 81, Genero.ANIMACION, 4.5, Idioma.ESPAÑOL));
+        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, Genero.ACCION, 3.9, Idioma.INGLES));
     }
 }
 
@@ -143,5 +145,11 @@ public class Main {
 // 2.3 Agregar el nuevo CASE que gestionara la nueva opcion, desde aqui llamaremos al nuevo metodo
 // 2.4 Crear un nuevo metodo en la clase Plataforma para obtener la pelicula mas larga
 
-// 3 Crear atributos extras en la clase Pelicula que sean idioma(Español, Ingles, Aleman) y calidad (HD, FULL HD, 4K) y que cada uno de ellos sea un ENUM
-
+// 3 Crear atributos extras en la clase Pelicula que sean idioma(Español, Ingles, Aleman) y calidad (HD, FULL HD, 4K) y que cada uno de ellos sea un ENUM ✔
+// 3.1 Agregar los nuevos atributos a la clase Pelicula ✔
+// 3.2 Modificar los constructores para agregar los nuevos atributos ✔
+// 3.3 Modificar el método obtenerFichaTecnica para mostrar los nuevos atributos ✔
+// 3.4 Modificar el método cargarPeliculas para agregar los nuevos atributos ✔
+// 3.5 Modificar el CASE AGREGAR_CONTENIDO para capturar los nuevos atributos ✔
+// 3.6 Crear un nuevo CASE para filtrar por idioma
+// 3.7 Crear un nuevo CASE para filtrar por calidad

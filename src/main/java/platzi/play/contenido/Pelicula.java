@@ -11,19 +11,22 @@ public class Pelicula {
     private LocalDate fechaEstreno;
     private double calificacion;
     private boolean disponible;
+    private Idioma idioma;
+
 
     //Constructor
-    public Pelicula(String titulo, int duracion, Genero genero) {
+    public Pelicula(String titulo, int duracion, Genero genero, Idioma idioma) {
         this.titulo = titulo;
         this.duracion = duracion;
         this.genero = genero;
         this.fechaEstreno = LocalDate.now(); // Fecha actual
         this.disponible = true; // Por defecto la pelicula está disponible
+        this.idioma = idioma;
     }
 
     //Otra forma de crear un constructor
-    public Pelicula(String titulo, int duracion, Genero genero, double calificacion) {
-        this(titulo, duracion, genero); // Llamada al constructor anterior
+    public Pelicula(String titulo, int duracion, Genero genero, double calificacion, Idioma idioma) {
+        this(titulo, duracion, genero, idioma); // Llamada al constructor anterior
         this.calificar(calificacion);
     }
 
@@ -37,6 +40,7 @@ public class Pelicula {
                "Genero: " + genero + "\n" +
                "Duración: " + duracion + " minutos\n" +
                "Calificación: " + calificacion + "/5\n" +
+                "Idioma: " + idioma + "\n" +
                "Descripción: " + descripcion + "\n" +
                (disponible ? "Disponible para ver" : "No disponible para ver");
     }

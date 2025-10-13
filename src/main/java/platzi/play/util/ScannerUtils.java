@@ -1,6 +1,7 @@
 package platzi.play.util;
 
 import platzi.play.contenido.Genero;
+import platzi.play.contenido.Idioma;
 
 import java.util.Scanner;
 
@@ -56,6 +57,21 @@ public class ScannerUtils {
                 }
             }
 
+        }
+    }
+
+    //Método para capturar Idioma
+    public static Idioma capturaIdioma(String mensaje) {
+        while (true) {
+            String entrada = capturarTexto(mensaje);
+            try {
+                return Idioma.valueOf(entrada.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Idioma inválido. Los idiomas válidos son:");
+                for (Idioma idioma : Idioma.values()) {
+                    System.out.println("- " + idioma);
+                }
+            }
         }
     }
 }
