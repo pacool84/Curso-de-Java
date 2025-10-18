@@ -2,6 +2,7 @@ package platzi.play.plataforma;
 
 import platzi.play.contenido.Genero;
 import platzi.play.contenido.Pelicula;
+import platzi.play.excepcion.PeliculaExistenteException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -20,6 +21,10 @@ public class Plataforma {
 
     // Método para agregar una película
     public void agregar(Pelicula elemento){
+        Pelicula contenido = this.buscarPorTitulo(elemento.getTitulo());
+        if(contenido != null) {
+            throw new PeliculaExistenteException(elemento.getTitulo());
+        }
         this.contenido.add(elemento);
     }
 

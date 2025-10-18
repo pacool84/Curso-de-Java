@@ -3,6 +3,7 @@ package platzi.play;
 import platzi.play.contenido.Genero;
 import platzi.play.contenido.Idioma;
 import platzi.play.contenido.Pelicula;
+import platzi.play.excepcion.PeliculaExistenteException;
 import platzi.play.plataforma.Plataforma;
 import platzi.play.plataforma.Usuario;
 import platzi.play.util.ScannerUtils;
@@ -56,9 +57,14 @@ public class Main {
                     int duracion = ScannerUtils.capturarEntero("Duración del contenido (minutos): ");
                     double calificacion = ScannerUtils.capturarDecimal("Calificación del contenido (0 - 5): ");
 
-                    Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion, idioma); // Instancia de la clase Pelicula
-                    plataforma.agregar(pelicula);
-                    System.out.println("El contenido ha sido agregado exitosamente");
+                    try {
+                        Pelicula pelicula = new Pelicula(nombre, duracion, genero, calificacion, idioma); // Instancia de la clase Pelicula
+                        plataforma.agregar(pelicula);
+                        System.out.println("El contenido ha sido agregado exitosamente");
+                    } catch (PeliculaExistenteException e) {
+                        System.out.println(e.getMessage());
+                    }
+
                 }
                 case MOSTRAR_CONTENIDO -> {
                     List<String> titulos = plataforma.getTitulos();
