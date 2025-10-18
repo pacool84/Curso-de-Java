@@ -2,6 +2,7 @@ package platzi.play.plataforma;
 
 import platzi.play.contenido.Genero;
 import platzi.play.contenido.Pelicula;
+import platzi.play.contenido.ResumenContenido;
 import platzi.play.excepcion.PeliculaExistenteException;
 
 import java.util.ArrayList;
@@ -91,6 +92,12 @@ public class Plataforma {
         return contenido.stream()
                 .mapToInt(Pelicula::getDuracion)
                 .sum();
+    }
+
+    public List<ResumenContenido> getResumenes() {
+        return contenido.stream()
+                .map(mamadas -> new ResumenContenido(mamadas.getTitulo(), mamadas.getDuracion(), mamadas.getGenero()))
+                .toList();
     }
 
     // Getters y Setters

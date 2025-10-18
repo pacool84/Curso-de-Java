@@ -3,6 +3,7 @@ package platzi.play;
 import platzi.play.contenido.Genero;
 import platzi.play.contenido.Idioma;
 import platzi.play.contenido.Pelicula;
+import platzi.play.contenido.ResumenContenido;
 import platzi.play.excepcion.PeliculaExistenteException;
 import platzi.play.plataforma.Plataforma;
 import platzi.play.plataforma.Usuario;
@@ -67,8 +68,8 @@ public class Main {
 
                 }
                 case MOSTRAR_CONTENIDO -> {
-                    List<String> titulos = plataforma.getTitulos();
-                    titulos.forEach(System.out::println); //Llamado por método de referencia
+                    List<ResumenContenido> contenidosResumidos = plataforma.getResumenes();
+                    contenidosResumidos.forEach(resumen -> System.out.println(resumen.toString())); //Llamado por método de referencia
                 }
                 case BUSCAR_CONTENIDO -> {
                     // FALTA IMPLEMENTAR
