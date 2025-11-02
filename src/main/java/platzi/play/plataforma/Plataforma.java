@@ -5,18 +5,18 @@ import platzi.play.contenido.Pelicula;
 import platzi.play.contenido.ResumenContenido;
 import platzi.play.excepcion.PeliculaExistenteException;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Plataforma {
     private String nombre;
     private List<Pelicula> contenido; // Entre Plataforma y Contenido hay una relación de Agregación
+    private Map<Pelicula, Integer> visualizaciones;
 
     // Constructor
     public Plataforma(String nombre) {
         this.nombre = nombre;
         this.contenido = new ArrayList<>(); // Inicializar la lista de contenido
+        this.visualizaciones = new HashMap<>(); // Inicializar el mapa de visualizaciones
 
     }
 
@@ -27,6 +27,20 @@ public class Plataforma {
             throw new PeliculaExistenteException(elemento.getTitulo());
         }
         this.contenido.add(elemento);
+    }
+
+    //Método para reproducir una película
+    public void reproducir(Pelicula contenido) {
+        int conteoActual = this.visualizaciones.getOrDefault(contenido , 0);
+        System.out.println(contenido.getTitulo() + " ha sido reproducido " + conteoActual + " veces. ");
+
+        this.contarVisualizacion(contenido);
+        contenido.reproducir();
+    }
+
+    private void contarVisualizacion(Pelicula contenido) {
+        int conteoActual = this.visualizaciones.getOrDefault(contenido, 0);
+        visualizaciones.put(contenido, conteoActual + 1);
     }
 
     // Método para recorrer y mostrar las películas

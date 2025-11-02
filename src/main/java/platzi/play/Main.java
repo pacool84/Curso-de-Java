@@ -24,7 +24,8 @@ public class Main {
     public static final int VER_POPULARES = 5;
     public static final int VER_MAS_POPULARES = 6;
     public static final int PELICULA_MAS_LARGA = 7;
-    public static final int ELIMINAR_CONTENIDO = 8;
+    public static final int REPRODUCIR_PELICULA = 8;
+    public static final int ELIMINAR_CONTENIDO = 9;
     public static final int SALIR = 0;
 
     public static void main(String[] args) {
@@ -45,7 +46,8 @@ public class Main {
                     5. Mostrar populares 
                     6. Mostrar películas con calificación mayor a 4 
                     7. Mostrar la película más larga
-                    8. Eliminar un contenido
+                    8. Reproducir una película
+                    9. Eliminar un contenido
                     0. Salir de la plataforma
                     Elige una opción 
                     """);
@@ -103,6 +105,16 @@ public class Main {
 
                     List<Pelicula> contenidosPopulares = plataforma.getPopulares(cantidad);
                     contenidosPopulares.forEach(contenido -> System.out.println(contenido.obtenerFichaTecnica() + "\n"));
+                }
+                case REPRODUCIR_PELICULA -> {
+                    String nombre = ScannerUtils.capturarTexto("Nombre del contenido a reproducir: ");
+                    Pelicula contenido = plataforma.buscarPorTitulo(nombre);
+
+                    if(contenido != null) {
+                        plataforma.reproducir(contenido);
+                    } else {
+                        System.out.println(nombre + " no se encuentra en el catálogo de la plataforma");
+                    }
                 }
                 case VER_MAS_POPULARES -> {
                     List<Pelicula> contenidosMasPopulares = plataforma.getMostPopulars();
