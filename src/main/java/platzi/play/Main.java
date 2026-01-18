@@ -9,6 +9,9 @@ import platzi.play.plataforma.Plataforma;
 import platzi.play.plataforma.Usuario;
 import platzi.play.util.ScannerUtils;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -135,6 +138,9 @@ public class Main {
     }
 
     private static void cargarPeliculas(Plataforma plataforma) {
+
+
+
         plataforma.agregar(new Pelicula("Shrek", 90, Genero.ANIMACION, Idioma.ESPAÑOL));
         plataforma.agregar(new Pelicula("Inception", 148, Genero.CIENCIA_FICCION, Idioma.INGLES));
         plataforma.agregar(new Pelicula("Titanic", 195, Genero.DRAMA, 4.6, Idioma.INGLES));

@@ -13,10 +13,12 @@ public enum Genero {
     DRAMA,
     FANTASIA,
     HORROR,
+    TERROR,
     ROMANCE,
     CIENCIA_FICCION,
     DOCUMENTAL,
     ANIMACION,
+    ANIMADA,
     AVENTURA,
     SUSPENSO,
     MUSICAL

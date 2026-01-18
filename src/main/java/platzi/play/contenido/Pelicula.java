@@ -30,6 +30,11 @@ public class Pelicula {
         this.calificar(calificacion);
     }
 
+    public Pelicula(String titulo, int duracion, Genero genero, double calificacion) {
+        this(titulo, duracion, genero, Idioma.INGLES);
+        this.calificar(calificacion);
+    }
+
     //Métodos
     public void reproducir() {
         System.out.println("Reproduciendo la película: " + titulo);
@@ -91,8 +96,8 @@ public class Pelicula {
         this.genero = genero;
     }
 
-    public LocalDate getFechaEstreno() {
-        return fechaEstreno;
+    public LocalDate getFechaEstreno(LocalDate fechaEstreno) {
+        return this.fechaEstreno;
     }
 
     public void setFechaEstreno(LocalDate fechaEstreno) {

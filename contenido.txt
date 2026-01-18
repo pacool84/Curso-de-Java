@@ -1,0 +1,12 @@
+Mad Max Fury Road|120|ACCION|4.8|2015-05-15
+La La Land|128|MUSICAL|4.2|2016-12-09
+Spirited Away|125|ANIMACION|4.9|2001-07-20
+Planet Earth|550|DOCUMENTAL|4.7|2006-03-05
+The Grand Budapest Hotel|99|COMEDIA|4.1|2014-03-28
+Whiplash|107|DRAMA|4.6|2014-10-10
+Get Out|104|HORROR|4.0|2017-02-24
+Her|126|CIENCIA_FICCION|4.3|2013-12-18
+The Lord of the Rings The Fellowship of the Ring|178|FANTASIA|4.8|2001-12-19
+Indiana Jones Raiders of the Lost Ark|115|AVENTURA|4.4|1981-06-12
+No Country for Old Men|122|SUSPENSO|4.5|2007-11-09
+Before Sunrise|101|ROMANCE|4.0|1995-01-27
