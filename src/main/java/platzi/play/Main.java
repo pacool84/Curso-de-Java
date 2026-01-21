@@ -7,6 +7,7 @@ import platzi.play.contenido.ResumenContenido;
 import platzi.play.excepcion.PeliculaExistenteException;
 import platzi.play.plataforma.Plataforma;
 import platzi.play.plataforma.Usuario;
+import platzi.play.util.FileUtils;
 import platzi.play.util.ScannerUtils;
 
 import java.io.IOException;
@@ -139,18 +140,19 @@ public class Main {
 
     private static void cargarPeliculas(Plataforma plataforma) {
 
+        plataforma.getContenido().addAll(FileUtils.leerContenido());
 
 
-        plataforma.agregar(new Pelicula("Shrek", 90, Genero.ANIMACION, Idioma.ESPAÑOL));
-        plataforma.agregar(new Pelicula("Inception", 148, Genero.CIENCIA_FICCION, Idioma.INGLES));
-        plataforma.agregar(new Pelicula("Titanic", 195, Genero.DRAMA, 4.6, Idioma.INGLES));
-        plataforma.agregar(new Pelicula("John Wick", 101, Genero.ACCION, Idioma.INGLES));
-        plataforma.agregar(new Pelicula("El Conjuro", 112, Genero.HORROR, 3.0, Idioma.FRANCES));
-        plataforma.agregar(new Pelicula("Coco", 105, Genero.ANIMACION, 4.7, Idioma.ESPAÑOL));
-        plataforma.agregar(new Pelicula("Interstellar", 169, Genero.CIENCIA_FICCION, 5, Idioma.INGLES));
-        plataforma.agregar(new Pelicula("Joker", 122, Genero.DRAMA, 4.3, Idioma.INGLES));
-        plataforma.agregar(new Pelicula("Toy Story", 81, Genero.ANIMACION, 4.5, Idioma.ESPAÑOL));
-        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, Genero.ACCION, 3.9, Idioma.INGLES));
+//        plataforma.agregar(new Pelicula("Shrek", 90, Genero.ANIMACION, Idioma.ESPAÑOL));
+//        plataforma.agregar(new Pelicula("Inception", 148, Genero.CIENCIA_FICCION, Idioma.INGLES));
+//        plataforma.agregar(new Pelicula("Titanic", 195, Genero.DRAMA, 4.6, Idioma.INGLES));
+//        plataforma.agregar(new Pelicula("John Wick", 101, Genero.ACCION, Idioma.INGLES));
+//        plataforma.agregar(new Pelicula("El Conjuro", 112, Genero.HORROR, 3.0, Idioma.FRANCES));
+//        plataforma.agregar(new Pelicula("Coco", 105, Genero.ANIMACION, 4.7, Idioma.ESPAÑOL));
+//        plataforma.agregar(new Pelicula("Interstellar", 169, Genero.CIENCIA_FICCION, 5, Idioma.INGLES));
+//        plataforma.agregar(new Pelicula("Joker", 122, Genero.DRAMA, 4.3, Idioma.INGLES));
+//        plataforma.agregar(new Pelicula("Toy Story", 81, Genero.ANIMACION, 4.5, Idioma.ESPAÑOL));
+//        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, Genero.ACCION, 3.9, Idioma.INGLES));
     }
 }
 
