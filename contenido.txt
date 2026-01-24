@@ -11,3 +11,5 @@ Indiana Jones Raiders of the Lost Ark|115|AVENTURA|4.4|1981-06-12
 No Country for Old Men|122|SUSPENSO|4.5|2007-11-09
 Before Sunrise|101|ROMANCE|4.0|1995-01-27
 Jason Bourne|203|CIENCIA_FICCION|4.8|2026-01-24
+Jujutsu Kaisen 0|250|ANIMACION|3.8|2026-01-24
+La vida de los pajaros|540|DOCUMENTAL|3.0|2026-01-24

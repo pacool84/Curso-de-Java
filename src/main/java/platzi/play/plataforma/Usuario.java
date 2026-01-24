@@ -1,6 +1,6 @@
 package platzi.play.plataforma;
 
-import platzi.play.contenido.Pelicula;
+import platzi.play.contenido.Contenido;
 
 import java.time.LocalDateTime;
 
@@ -18,10 +18,10 @@ public class Usuario {
     }
 
     // Métodos
-    public void ver(Pelicula pelicula) {
+    public void ver(Contenido contenido) {
         System.out.println("--------------------------------");
         System.out.println(nombre + " está viendo la película ");
-        pelicula.reproducir();
+        contenido.reproducir();
     }
 
     // Getters y Setters
