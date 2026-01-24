@@ -96,7 +96,7 @@ public class Pelicula {
         this.genero = genero;
     }
 
-    public LocalDate getFechaEstreno(LocalDate fechaEstreno) {
+    public LocalDate getFechaEstreno() {
         return this.fechaEstreno;
     }
 
