@@ -9,9 +9,16 @@ public class Documental extends Contenido {
         super(titulo, duracion, genero, calificacion, idioma);
     }
 
+
     public Documental(String titulo, int duracion, Genero genero, double calificacion, String narrador) {
         super(titulo, duracion, genero, calificacion);
         this.narrador = narrador; // Debe de ser siempre despues de la llamada a super()
+    }
+
+    @Override // Sobrescritura de método abstracto
+    public void reproducir() {
+        System.out.println("Reproduciendo el documental " + getTitulo() + " narrador por " + getNarrador());
+
     }
 
     //Getters y Setters

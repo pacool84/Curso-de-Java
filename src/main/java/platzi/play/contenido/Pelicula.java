@@ -12,4 +12,10 @@ public class Pelicula extends Contenido {
     public Pelicula(String titulo, int duracion, Genero genero, double calificacion) {
         super(titulo, duracion, genero, calificacion);
     }
+
+    @Override // Sobrescritura de método abstracto
+    public void reproducir() {
+        System.out.println("Reproduciendo película " + getTitulo());
+
+    }
 }
