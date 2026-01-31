@@ -128,6 +128,14 @@ public class Plataforma {
                 .toList();
     }
 
+    public List<Promocionable> getContenidoPromocionable() {
+        return contenido.stream()
+                .filter( contenido -> contenido instanceof Promocionable)
+                .map(contenidoProm -> (Promocionable) contenidoProm)
+                .toList();
+
+    }
+
     // Getters y Setters
 
     public String getNombre() {
