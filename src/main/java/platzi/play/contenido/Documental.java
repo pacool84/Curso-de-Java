@@ -22,4 +22,13 @@ public class Documental extends Contenido {
     public void setNarrador(String narrador) {
         this.narrador = narrador;
     }
+
+    @Override
+    public String obtenerFichaTecnica() {
+        String ficha = super.obtenerFichaTecnica();
+        if (narrador == null || narrador.isBlank()) {
+            return ficha;
+        }
+        return ficha + "\n" + "Narrador: " + narrador;
+    }
 }

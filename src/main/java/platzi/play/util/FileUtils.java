@@ -1,7 +1,9 @@
 package platzi.play.util;
 
+import platzi.play.contenido.Documental;
 import platzi.play.contenido.Genero;
 import platzi.play.contenido.Contenido;
+import platzi.play.contenido.Pelicula;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,10 +26,20 @@ public class FileUtils {
                 contenido.getFechaEstreno().toString()
         );
 
+        String lineaFinal;
 
+        // Verificar si el contenido es una instancia de Documental
+        if(contenido instanceof Documental documental) {
+
+            lineaFinal = "DOCUMENTAL" + SEPARADOR + linea + SEPARADOR + documental.getNarrador();
+        } else {
+            lineaFinal = "PELICULA" + SEPARADOR + linea;
+        }
+
+        // Escribir la línea en el archivo
         try {
             System.out.println(linea);
-            Files.writeString(Paths.get(NOMBRE_ARCHIVO), linea + System.lineSeparator(), StandardOpenOption.CREATE, StandardOpenOption.APPEND); // Agrega al final del archivo
+            Files.writeString(Paths.get(NOMBRE_ARCHIVO), lineaFinal + System.lineSeparator(), StandardOpenOption.CREATE, StandardOpenOption.APPEND); // Agrega al final del archivo
         } catch (IOException e) {
             System.out.println("Error escribiendo en el archivo. " + e.getMessage());
         }
@@ -49,16 +61,28 @@ public class FileUtils {
             lineas.forEach(linea -> {
                 String[] datos = linea.split("\\" + SEPARADOR);
 
-                if (datos.length == 5) {
-                    String titulo = datos[0];
-                    int duracion = Integer.parseInt(datos[1]);
-                    Genero genero = Genero.valueOf(datos[2].toUpperCase());
-                    double calificacion = datos[3].isBlank() ? 0 : Double.parseDouble(datos[3]);
-                    LocalDate fechaEstreno = LocalDate.parse(datos[4]);
+                String tipoContenido = datos[0]; // Primer elemento indica el tipo de contenido
 
-                    Contenido contenido = new Contenido(titulo, duracion, genero, calificacion);
+
+
+                if (("PELICULA".equals(tipoContenido) && datos.length == 6) || ("DOCUMENTAL".equals(tipoContenido) && datos.length == 7 ) ) {
+                    String titulo = datos[1];
+                    int duracion = Integer.parseInt(datos[2]);
+                    Genero genero = Genero.valueOf(datos[3].toUpperCase());
+                    double calificacion = datos[4].isBlank() ? 0 : Double.parseDouble(datos[4]);
+                    LocalDate fechaEstreno = LocalDate.parse(datos[5]);
+
+                    Contenido contenido;
+
+                    //Polimorfismo, se instancia con un tipo de dato específico pero se maneja como el tipo padre
+                    if("PELICULA".equals(tipoContenido)) {
+                        contenido = new Pelicula(titulo, duracion, genero, calificacion);
+                    } else {
+                        String narrador = datos[6];
+                        contenido = new Documental(titulo, duracion, genero, calificacion, narrador);
+                    }
+
                     contenido.setFechaEstreno(fechaEstreno);
-
                     contenidoDesdeArchivo.add(contenido);
                 }
             });

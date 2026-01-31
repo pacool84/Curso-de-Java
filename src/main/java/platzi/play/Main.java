@@ -9,6 +9,8 @@ import platzi.play.util.ScannerUtils;
 import java.util.List;
 
 public class Main {
+
+    // Constantes de las opciones del menú
     public static final String VERSION = "1.0.0"; // final - constante, no se puede modificar o reasignar "Inmutable"
     public static final String NOMBRE_PLATAFORMA = "Hello My Friend JAVA 👋🏻 ";
     public static final int AGREGAR_CONTENIDO = 1;
@@ -20,6 +22,7 @@ public class Main {
     public static final int PELICULA_MAS_LARGA = 7;
     public static final int REPRODUCIR_PELICULA = 8;
     public static final int ELIMINAR_CONTENIDO = 9;
+    public static final int BUSCAR_POR_TIPO = 10;
     public static final int SALIR = 0;
 
     public static void main(String[] args) {
@@ -42,6 +45,7 @@ public class Main {
                     7. Mostrar la película más larga
                     8. Reproducir una película
                     9. Eliminar un contenido
+                    10. Buscar por tipo de contenido (película o documental)
                     0. Salir de la plataforma
                     Elige una opción 
                     """);
@@ -125,6 +129,21 @@ public class Main {
                     System.out.println("Película más larga de la plataforma: \n");
                     Contenido contenidoMasLarga = plataforma.getPeliculaMasLarga();
                     System.out.println(contenidoMasLarga.obtenerFichaTecnica() + "\n");
+                }
+
+                case BUSCAR_POR_TIPO -> {
+                    int tipoDeContenido = ScannerUtils.capturarEntero("Que tipo de contenido deseas buscar? 1. Pelicula\n2. Documental");
+
+                    if(tipoDeContenido == 1) {
+                        List<Pelicula> peliculas = plataforma.getPeliculas();
+                        System.out.println("Películas encontradas: \n");
+                        peliculas.forEach(pelicula -> System.out.println(pelicula.obtenerFichaTecnica() + "\n"));
+
+                    } else  {
+                        List<Documental> documentales = plataforma.getDocumentales();
+                        System.out.println("Documentales encontrados: \n");
+                        documentales.forEach(documental -> System.out.println(documental.obtenerFichaTecnica() + "\n"));
+                    }
                 }
                 case SALIR -> System.exit(0);
 
